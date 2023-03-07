@@ -44,23 +44,16 @@
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <div class="logo">
-
                         <img src="res/aacc-logo.png" alt="">
-
-
-
                     </div>
-
-
                 </a>
-
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar"
                     aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <nav id="main-nav" class="ms-auto">
-                        <!-- Sample menu definition -->
                         <ul id="main-menu" class="sm sm-simple">
                             <li><a class="current" href="index.html"> Home</a></li>
                             <li><a class="" href="#"> About</a>
@@ -98,11 +91,6 @@
 
     </section>
     <div class="main-body">
-        <div class="message_container" id="alert-message-container">
-        </div>
-        <script>
-            setTimeout(function () { document.getElementById('alert-message-container').remove() }, 10000);
-        </script>
         <div class="menu_gradient"></div>
         <div class="slider">
 
@@ -1728,9 +1716,9 @@
             </div>
         </div>
     </div>
-    <section class="pillars">
+    <section class="" style="background: var(--var-color); color: #fff">
         <div class="container">
-            <div class="row">
+            <div class="row pt-4">
                 <div class="col-md-6">
                     <div class="what-we-do">
                         <h2>AACC Programmatic Pillars</h2>
@@ -1755,6 +1743,26 @@
                 <div class="col-md-6">
                     <div class="Latest-events">
                         <h2>Latest Events</h2>
+                        <a href="./res/Web Advert Note AACC 9th Theologicla Institute.doc" class="event_link">
+                            <div class="event-item">
+                                <div class="event-date">
+
+                                    <span class="date">
+                                        7-16
+                                    </span>
+                                    <span class="month">
+                                        Nov
+                                    </span>
+                                    <span class="year">
+                                        2023
+                                    </span>
+                                </div>
+                                <div class="event_dtls">
+                                    <h5 class="color">AACC 9th Theological Institute</h5>
+                                    <p class="sec-color"><i class="fa fa-map-marker-alt"></i> Abuja NIGERIA</p>
+                                </div>
+                            </div>
+                        </a>
                         <a href="events/details/symposium-on-addressing-misleading-theologies-on-power-and-authority.html"
                             class="event_link">
                             <div class="event-item">
@@ -1868,7 +1876,6 @@
                             </div>
                         </a>
 
-
                     </div>
                     <style>
                         .event_link {
@@ -1950,7 +1957,7 @@
             </div>
         </div>
     </section>
-    <style>
+    <!-- <style>
         .border-none {
             border: none;
         }
@@ -1972,7 +1979,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -2102,6 +2109,12 @@
                 $('.mc_country_details').removeClass('is_shown').addClass('is_hidden');
                 $('#' + this.id + '_marker').addClass('is_active');
                 $('#' + this.id + '_country').addClass('is_shown').removeClass('is_hidden');
+            });
+
+            $('.fa-bars').click(function () {
+                $('.collapse:not(.show)').collapse('show').addClass('mt-5');
+                // hide on click again
+                $('.collapse.show').collapse('hide');
             });
         })
 

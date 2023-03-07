@@ -1385,15 +1385,31 @@ body.lb-disable-scrolling {
 
 @media (max-width: 768px) {
   .slider_caption h3 {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
 
   .slider_caption {
-    width: 80%;
+    width: 90%;
   }
 
   .slider_div {
     height: 80vh;
+  }
+
+  .slider {
+    top: 30px;
+  }
+
+  .navbar-brand img {
+    height: 50px;
+  }
+
+  .event-date .date {
+    font-size: 20px;
+  }
+
+  .menu_gradient {
+    display: none;
   }
 }
 
