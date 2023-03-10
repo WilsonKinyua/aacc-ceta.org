@@ -828,8 +828,9 @@ body.lb-disable-scrolling {
 .slider_div {
   background-repeat: no-repeat !important;
   background-position: center !important;
-  background-size: cover !important;
+  background-image: url('../../res/2.png');
   height: 100vh;
+  background-size: 100% 100%;
 }
 .dark_translusent {
   background: rgb(0 0 0/82%);
