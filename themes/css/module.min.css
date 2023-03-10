@@ -1383,6 +1383,10 @@ body.lb-disable-scrolling {
   right: -10%;
 }
 
+.event-item {
+  width: 450px;
+}
+
 @media (max-width: 768px) {
   .slider_caption h3 {
     font-size: 1.6rem;
@@ -1404,15 +1408,20 @@ body.lb-disable-scrolling {
     height: 50px;
   }
 
-  .event-date .date {
-    font-size: 20px;
+  .event-date .date,
+  .event-date .month,.event-date .year {
+    font-size: 16px !important;
   }
 
   .menu_gradient {
     display: none;
   }
+
+  .event-item {
+    width: auto;
+  }
 }
 
 .slick-dots {
-    display: none !important;
+  display: none !important;
 }
