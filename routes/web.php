@@ -5,6 +5,7 @@ Route::get('/about', 'PublicController@about')->name('about');
 Route::get('/organization', 'PublicController@organization')->name('organization');
 Route::get('/what-we-do', 'PublicController@whatWeDo')->name('what-we-do');
 Route::get('/member-churches', 'PublicController@memberChurches')->name('member-churches');
+Route::get('/member-churche/{slug}', 'PublicController@memberChurch')->name('member-church');
 Route::get('/post/{slug}', 'PublicController@post')->name('post');
 
 Route::get('/home', function () {

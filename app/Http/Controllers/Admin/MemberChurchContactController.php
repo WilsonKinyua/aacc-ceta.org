@@ -31,7 +31,7 @@ class MemberChurchContactController extends Controller
     {
         abort_if(Gate::denies('member_church_contact_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_church_centers = MemberChurchCenter::pluck('location', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_church_centers = MemberChurchCenter::all();
 
         return view('admin.memberChurchContacts.create', compact('member_church_centers'));
     }
@@ -51,7 +51,7 @@ class MemberChurchContactController extends Controller
     {
         abort_if(Gate::denies('member_church_contact_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_church_centers = MemberChurchCenter::pluck('location', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_church_centers = MemberChurchCenter::all();
 
         $memberChurchContact->load('member_church_center');
 

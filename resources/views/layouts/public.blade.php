@@ -62,7 +62,7 @@
                                 </ul>
                             </li>
                             <li><a class="" href="{{ route('what-we-do') }}"> What we Do</a></li>
-                            <li><a class="" href="member_churches"> Member Churches</a></li>
+                            <li><a class="" href="{{ route('member-churches') }}"> Member Churches</a></li>
 
                             <li><a class="" href="#"> Resources</a>
                                 <ul class="sub_menu">

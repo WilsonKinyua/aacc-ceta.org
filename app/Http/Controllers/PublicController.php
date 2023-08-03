@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MemberChurchCenter;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,14 @@ class PublicController extends Controller
 
     public function memberChurches()
     {
-        return view('public.member-churches');
+        $memberChurches = MemberChurchCenter::all();
+        return view('public.member-churches', compact('memberChurches'));
+    }
+
+    public function memberChurch($slug)
+    {
+        $memberChurch = MemberChurchCenter::where('slug', $slug)->firstOrFail();
+        return view('public.member-church', compact('memberChurch'));
     }
 
     public function post($slug)
