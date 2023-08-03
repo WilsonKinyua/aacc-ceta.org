@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="AACC">
+    <meta name="description"
+        content="AACC is a continental ecumenical body that accounts for over 140 million Christians across the continent.">
     <meta name="author" content="AACC">
 
     <meta property="og:title" content="AACC" />
@@ -19,11 +20,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('res/ico/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('res/ico/site.webmanifest') }}">
 
-
-
-    <base />
-    <title>AACC</title>
-
+    <title>All Africa Conference of Churches (AACC) - AACC is a continental ecumenical body that accounts for over 140
+        million Christians across the continent.</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.min.css') }}" />
 
@@ -54,32 +52,32 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <nav id="main-nav" class="ms-auto">
                         <ul id="main-menu" class="sm sm-simple">
-                            <li><a class="current" href="/"> Home</a></li>
-                            <li><a class="" href="#"> About</a>
+                            <li><a href="/"> Home</a></li>
+                            <li><a href="#"> About</a>
                                 <ul class="sub_menu">
                                     <li><a href="{{ route('about') }}"> About us</a></li>
                                     <li><a href="{{ route('organization') }}"> The Organization</a></li>
                                 </ul>
                             </li>
-                            <li><a class="" href="{{ route('what-we-do') }}"> What we Do</a></li>
-                            <li><a class="" href="{{ route('member-churches') }}"> Member Churches</a></li>
+                            <li><a href="{{ route('what-we-do') }}"> What we Do</a></li>
+                            <li><a href="{{ route('member-churches') }}"> Member Churches</a></li>
 
-                            <li><a class="" href="#"> Resources</a>
+                            <li><a href="#"> Resources</a>
                                 <ul class="sub_menu">
-                                    <li><a href="posts.html">News</a></li>
-                                    <li> <a href="gallery.html" class="news">Gallery</a></li>
-                                    <li> <a href="./aacc-statements.html" class="news">Statements</a></li>
-                                    <li> <a href="./careers.html" class="news">Careers</a></li>
-                                    <li> <a target="_blank" href="./res/papers.pdf" class="news">Papers</a></li>
-                                    <li> <a href="./policies.html" class="news">Policies</a></li>
-                                    <li> <a target="_blank" href="./res/prayer-alerts.pdf" class="news">Prayer
+                                    <li><a href="{{ route('posts') }}">News</a></li>
+                                    <li> <a href="{{ route('gallery') }}" class="news">Gallery</a></li>
+                                    <li> <a href="{{ route('statements') }}" class="news">Statements</a></li>
+                                    <li> <a href="{{ route('careers') }}" class="news">Careers</a></li>
+                                    <li> <a target="_blank" href="{{ asset('res/papers.pdf') }}"
+                                            class="news">Papers</a></li>
+                                    <li> <a href="{{ route('policies') }}" class="news">Policies</a></li>
+                                    <li> <a target="_blank" href="{{ asset('res/prayer-alerts.pdf') }}"
+                                            class="news">Prayer
                                             Alerts</a></li>
-                                    <li> <a href="./african-pulse.html" class="news">African Pulse</a></li>
+                                    <li> <a href="{{ route('african-pulse') }}" class="news">African Pulse</a></li>
                                 </ul>
-
-
                             </li>
-                            <li><a class="" href="contacts.html"> Contact us</a></li>
+                            <li><a href="{{ route('contacts') }}"> Contact us</a></li>
 
                         </ul>
                     </nav>
@@ -159,55 +157,6 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="LoginModalLabel">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="text-center">
-                    </div>
-
-                    <form class="user" method="POST" action="https://aacc.wezadevelopments.com/login">
-                        <input type="hidden" name="link" value="/" />
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username / Email address</label>
-                            <input type="text" class="form-control" name="username" id="username"
-                                placeholder="Your Username / Email Address" value="" />
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="password" name="password" id="password" class="form-control"
-                                placeholder="**********" />
-                            <span title="Toggle Password visibility" class="input-group-text password-toggler"
-                                onclick="showPassword()" id="showpassword"><i id="pass_togler_eye"
-                                    class="fa fa-eye-slash"></i></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="g-recaptcha" data-sitekey="6LfFSZ4UAAAAALNBYt6wGoB5qgkfladV8HGB1I2G"></div>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in-alt"></i>
-                                    Login</button>
-                            </div>
-                        </div>
-
-                    </form>
-                    <div class="text-center mt-4">
-                        <a class="small" href="forgotpassword.html">Forgot Password?</a> |
-                        <a class="small" href="register.html">Don't have an account?</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
     <script type="text/javascript" src="{{ asset('js/main.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/module.min.js') }}"></script>
 

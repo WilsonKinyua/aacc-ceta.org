@@ -6,7 +6,19 @@ Route::get('/organization', 'PublicController@organization')->name('organization
 Route::get('/what-we-do', 'PublicController@whatWeDo')->name('what-we-do');
 Route::get('/member-churches', 'PublicController@memberChurches')->name('member-churches');
 Route::get('/member-churche/{slug}', 'PublicController@memberChurch')->name('member-church');
+Route::get('/posts', 'PublicController@posts')->name('posts');
 Route::get('/post/{slug}', 'PublicController@post')->name('post');
+Route::get('/gallery', 'PublicController@gallery')->name('gallery');
+Route::get('/aacc-statements', 'PublicController@statements')->name('statements');
+Route::get('/careers', 'PublicController@careers')->name('careers');
+Route::get('/policies', function () {
+    return view('public.policies');
+})->name('policies');
+Route::get('/african-pulse', function () {
+    return view('public.african-pulse');
+})->name('african-pulse');
+Route::get('/contacts', 'PublicController@contacts')->name('contacts');
+Route::post('/contact/create', 'PublicController@contactMessage')->name('contact.create');
 
 Route::get('/home', function () {
     if (session('status')) {
