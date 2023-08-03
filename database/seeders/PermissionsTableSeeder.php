@@ -176,6 +176,70 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 42,
+                'title' => 'member_church_access',
+            ],
+            [
+                'id'    => 43,
+                'title' => 'member_church_center_create',
+            ],
+            [
+                'id'    => 44,
+                'title' => 'member_church_center_edit',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'member_church_center_show',
+            ],
+            [
+                'id'    => 46,
+                'title' => 'member_church_center_delete',
+            ],
+            [
+                'id'    => 47,
+                'title' => 'member_church_center_access',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'country_create',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'country_edit',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'country_show',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'country_delete',
+            ],
+            [
+                'id'    => 52,
+                'title' => 'country_access',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'member_church_contact_create',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'member_church_contact_edit',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'member_church_contact_show',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'member_church_contact_delete',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'member_church_contact_access',
+            ],
+            [
+                'id'    => 58,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -58,6 +58,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Contact
     Route::delete('contacts/destroy', 'ContactController@massDestroy')->name('contacts.massDestroy');
     Route::resource('contacts', 'ContactController');
+
+    // Member Church Center
+    Route::delete('member-church-centers/destroy', 'MemberChurchCenterController@massDestroy')->name('member-church-centers.massDestroy');
+    Route::resource('member-church-centers', 'MemberChurchCenterController');
+
+    // Countries
+    Route::delete('countries/destroy', 'CountriesController@massDestroy')->name('countries.massDestroy');
+    Route::resource('countries', 'CountriesController');
+
+    // Member Church Contact
+    Route::delete('member-church-contacts/destroy', 'MemberChurchContactController@massDestroy')->name('member-church-contacts.massDestroy');
+    Route::post('member-church-contacts/media', 'MemberChurchContactController@storeMedia')->name('member-church-contacts.storeMedia');
+    Route::post('member-church-contacts/ckmedia', 'MemberChurchContactController@storeCKEditorImages')->name('member-church-contacts.storeCKEditorImages');
+    Route::resource('member-church-contacts', 'MemberChurchContactController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

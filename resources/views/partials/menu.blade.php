@@ -35,6 +35,16 @@
                 </a>
             </li>
         @endcan
+        @can('country_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.countries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/countries") || request()->is("admin/countries/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-flag c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.country.title') }}
+                </a>
+            </li>
+        @endcan
         @can('gallery_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.galleries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/galleries") || request()->is("admin/galleries/*") ? "c-active" : "" }}">
@@ -53,6 +63,38 @@
                     </i>
                     {{ trans('cruds.statement.title') }}
                 </a>
+            </li>
+        @endcan
+        @can('member_church_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/member-church-centers*") ? "c-show" : "" }} {{ request()->is("admin/member-church-contacts*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-church c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.memberChurch.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('member_church_center_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.member-church-centers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/member-church-centers") || request()->is("admin/member-church-centers/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-church c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.memberChurchCenter.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('member_church_contact_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.member-church-contacts.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/member-church-contacts") || request()->is("admin/member-church-contacts/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-phone-volume c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.memberChurchContact.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
             </li>
         @endcan
         @can('post_access')
