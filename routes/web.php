@@ -20,6 +20,23 @@ Route::get('/african-pulse', function () {
 Route::get('/contacts', 'PublicController@contacts')->name('contacts');
 Route::post('/contact/create', 'PublicController@contactMessage')->name('contact.create');
 
+// ====================================================== Events ========================================================================
+Route::get('/aacc-9th-theological-institute', function () {
+    return view('public.events.aacc-9th-theological-institute');
+})->name('aacc-9th-theological-institute');
+Route::get('/symposium-on-addressing-misleading-theologies-on-power-and-authority', function () {
+    return view('public.events.symposium-on-addressing-misleading-theologies-on-power-and-authority');
+})->name('symposium-on-addressing-misleading-theologies-on-power-and-authority');
+Route::get('/webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery', function () {
+    return view('public.events.webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery');
+})->name('webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery');
+Route::get('/day-of-the-african-child', function () {
+    return view('public.events.day-of-the-african-child');
+})->name('day-of-the-african-child');
+Route::get('/ecumenical-commemorations-of-the-world-environment-day', function () {
+    return view('public.events.ecumenical-commemorations-of-the-world-environment-day');
+})->name('ecumenical-commemorations-of-the-world-environment-day');
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));

@@ -1438,7 +1438,7 @@
                 <div class="col-md-6">
                     <div class="Latest-events">
                         <h2>Latest Events</h2>
-                        <a href="" class="event_link">
+                        <a href="{{ route('aacc-9th-theological-institute') }}" class="event_link">
                             <div class="event-item">
                                 <div class="event-date">
 
@@ -1458,7 +1458,8 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="" class="event_link">
+                        <a href="{{ route('symposium-on-addressing-misleading-theologies-on-power-and-authority') }}"
+                            class="event_link">
                             <div class="event-item">
                                 <div class="event-date">
 
@@ -1488,7 +1489,8 @@
                             </div>
                         </a>
 
-                        <a href="" class="event_link">
+                        <a href="{{ route('webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery') }}"
+                            class="event_link">
                             <div class="event-item">
                                 <div class="event-date">
 
@@ -1517,10 +1519,9 @@
                             </div>
                         </a>
 
-                        <a href="" class="event_link">
+                        <a href="{{ route('day-of-the-african-child') }}" class="event_link">
                             <div class="event-item">
                                 <div class="event-date">
-
                                     <span class="date">
                                         16
                                     </span>
@@ -1542,7 +1543,8 @@
                             </div>
                         </a>
 
-                        <a href="" class="event_link">
+                        <a href="{{ route('ecumenical-commemorations-of-the-world-environment-day') }}"
+                            class="event_link">
                             <div class="event-item">
                                 <div class="event-date">
 
