@@ -24672,6 +24672,11 @@ body {
   border-bottom-right-radius: 15px;
   z-index: -1;
 }
+@media (max-width: 768px) {
+  .about_principles {
+    display: none;
+  }
+}
 .about_principles::after {
   font-family: "aacc";
   content: "\e900";

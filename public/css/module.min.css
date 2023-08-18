@@ -830,7 +830,8 @@ body.lb-disable-scrolling {
   background-position: center !important;
   background-image: url('../framework/modules/home_slider/uploads/home_slider/aaccbuilding.jpg');
   height: 100vh;
-  background-size: 100% 100%;
+  background-size: cover;
+
 }
 .dark_translusent {
   background: rgb(0 0 0/82%);
@@ -1209,6 +1210,11 @@ body.lb-disable-scrolling {
   align-items: center;
   align-content: center;
   border-radius: 10px;
+}
+@media (max-width: 768px) {
+  .post_img::before {
+    display: none;
+  }
 }
 .profile_social_links {
   font-size: 1.5rem;
