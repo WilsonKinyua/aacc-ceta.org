@@ -23,7 +23,7 @@
                     <p>AACC is a continental ecumenical body that accounts for over 140 million Christians across
                         the continent.</p>
                     <p>AACC is the largest association of Protestant, Anglican, Orthodox and Indigenous churches in
-                        Africa and is a member of the worldwide ecumenical network. AACC is a fellowship of 193
+                        Africa and is a member of the worldwide ecumenical network. AACC is a fellowship of 204
                         members comprising of Churches, National Councils of Churches (NCCs), theological and lay
                         training institutions and other Christian organizations in 42 African countries.</p>
                 </div>
