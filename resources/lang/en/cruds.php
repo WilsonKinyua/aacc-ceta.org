@@ -93,7 +93,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
-            'image'             => 'Images',
+            'image'             => 'Image(s)',
             'image_helper'      => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
@@ -103,6 +103,8 @@ return [
             'deleted_at_helper' => ' ',
             'caption'           => 'Caption',
             'caption_helper'    => ' ',
+            'category'          => 'Category',
+            'category_helper'   => ' ',
         ],
     ],
     'statement' => [
@@ -253,6 +255,28 @@ return [
             'updated_at_helper'     => ' ',
             'deleted_at'            => 'Deleted at',
             'deleted_at_helper'     => ' ',
+        ],
+    ],
+    'galleryManagement' => [
+        'title'          => 'Gallery Management',
+        'title_singular' => 'Gallery Management',
+    ],
+    'category' => [
+        'title'          => 'Category',
+        'title_singular' => 'Category',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'name'              => 'Name',
+            'name_helper'       => ' ',
+            'image'             => 'Image',
+            'image_helper'      => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
         ],
     ],
 

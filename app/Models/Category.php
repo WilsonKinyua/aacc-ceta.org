@@ -9,11 +9,11 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Gallery extends Model implements HasMedia
+class Category extends Model implements HasMedia
 {
     use InteractsWithMedia, HasFactory;
 
-    public $table = 'galleries';
+    public $table = 'categories';
 
     protected $appends = [
         'image',
@@ -26,7 +26,7 @@ class Gallery extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'caption',
+        'name',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -43,20 +43,15 @@ class Gallery extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class);
-    }
-
     public function getImageAttribute()
     {
-        $files = $this->getMedia('image');
-        $files->each(function ($item) {
-            $item->url       = $item->getUrl();
-            $item->thumbnail = $item->getUrl('thumb');
-            $item->preview   = $item->getUrl('preview');
-        });
+        $file = $this->getMedia('image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
 
-        return $files;
+        return $file;
     }
 }

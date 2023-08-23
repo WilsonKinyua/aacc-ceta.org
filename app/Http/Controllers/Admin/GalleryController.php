@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyGalleryRequest;
 use App\Http\Requests\StoreGalleryRequest;
 use App\Http\Requests\UpdateGalleryRequest;
+use App\Models\Category;
 use App\Models\Gallery;
 use Gate;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class GalleryController extends Controller
     {
         abort_if(Gate::denies('gallery_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $galleries = Gallery::with(['media'])->get();
+        $galleries = Gallery::with(['categories', 'media'])->get();
 
         return view('admin.galleries.index', compact('galleries'));
     }
@@ -30,13 +31,15 @@ class GalleryController extends Controller
     {
         abort_if(Gate::denies('gallery_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.galleries.create');
+        $categories = Category::pluck('name', 'id');
+
+        return view('admin.galleries.create', compact('categories'));
     }
 
     public function store(StoreGalleryRequest $request)
     {
         $gallery = Gallery::create($request->all());
-
+        $gallery->categories()->sync($request->input('categories', []));
         foreach ($request->input('image', []) as $file) {
             $gallery->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('image');
         }
@@ -52,13 +55,17 @@ class GalleryController extends Controller
     {
         abort_if(Gate::denies('gallery_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.galleries.edit', compact('gallery'));
+        $categories = Category::pluck('name', 'id');
+
+        $gallery->load('categories');
+
+        return view('admin.galleries.edit', compact('categories', 'gallery'));
     }
 
     public function update(UpdateGalleryRequest $request, Gallery $gallery)
     {
         $gallery->update($request->all());
-
+        $gallery->categories()->sync($request->input('categories', []));
         if (count($gallery->image) > 0) {
             foreach ($gallery->image as $media) {
                 if (! in_array($media->file_name, $request->input('image', []))) {
@@ -79,6 +86,8 @@ class GalleryController extends Controller
     public function show(Gallery $gallery)
     {
         abort_if(Gate::denies('gallery_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $gallery->load('categories');
 
         return view('admin.galleries.show', compact('gallery'));
     }

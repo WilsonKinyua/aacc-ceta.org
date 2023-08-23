@@ -17,15 +17,22 @@ class UpdateGalleryRequest extends FormRequest
     public function rules()
     {
         return [
+            'categories.*' => [
+                'integer',
+            ],
+            'categories' => [
+                'required',
+                'array',
+            ],
+            'caption' => [
+                'string',
+                'required',
+            ],
             'image' => [
                 'array',
                 'required',
             ],
             'image.*' => [
-                'required',
-            ],
-            'caption' => [
-                'string',
                 'required',
             ],
         ];

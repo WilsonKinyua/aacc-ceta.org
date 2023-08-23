@@ -1,38 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-@can('gallery_create')
+@can('category_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.galleries.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.gallery.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.categories.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.category.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.gallery.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.category.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Gallery">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Category">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.gallery.fields.category') }}
+                            {{ trans('cruds.category.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.gallery.fields.caption') }}
+                            {{ trans('cruds.category.fields.image') }}
                         </th>
                         <th>
-                            {{ trans('cruds.gallery.fields.image') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.gallery.fields.created_at') }}
+                            {{ trans('cruds.category.fields.created_at') }}
                         </th>
                         <th>
                             &nbsp;
@@ -40,44 +37,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($galleries as $key => $gallery)
-                        <tr data-entry-id="{{ $gallery->id }}">
+                    @foreach($categories as $key => $category)
+                        <tr data-entry-id="{{ $category->id }}">
                             <td>
 
                             </td>
                             <td>
-                                @foreach($gallery->categories as $key => $item)
-                                    <span class="badge badge-info">{{ $item->name }}</span>
-                                @endforeach
+                                {{ $category->name ?? '' }}
                             </td>
                             <td>
-                                {{ $gallery->caption ?? '' }}
-                            </td>
-                            <td>
-                                @foreach($gallery->image as $key => $media)
-                                    <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $media->getUrl('thumb') }}">
+                                @if($category->image)
+                                    <a href="{{ $category->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $category->image->getUrl('thumb') }}">
                                     </a>
-                                @endforeach
+                                @endif
                             </td>
                             <td>
-                                {{ $gallery->created_at ?? '' }}
+                                {{ $category->created_at ?? '' }}
                             </td>
                             <td>
-                                @can('gallery_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.galleries.show', $gallery->id) }}">
+                                @can('category_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.categories.show', $category->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('gallery_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.galleries.edit', $gallery->id) }}">
+                                @can('category_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.categories.edit', $category->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('gallery_delete')
-                                    <form action="{{ route('admin.galleries.destroy', $gallery->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('category_delete')
+                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -102,11 +94,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('gallery_delete')
+@can('category_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.galleries.massDestroy') }}",
+    url: "{{ route('admin.categories.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -134,10 +126,10 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 4, 'desc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Gallery:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Category:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

@@ -25,7 +25,7 @@
                         target="_blank" rel="noopener noreferrer">
                         Desmond Tutu Conference Centre
                     </a>
-                    <a href="#" target="{{ route('organization') }}" rel="noopener noreferrer">AACC Staff</a>
+                    <a href="{{ route('organization') }}" rel="noopener noreferrer">AACC Staff</a>
                     {{-- <a href="#" target="" rel="noopener noreferrer">African Union Office & Advocacy </a> --}}
                     <a href="https://allafricayouthcongress.org/" target="_blank" rel="noopener noreferrer">All
                         Africa Youth Congress </a>

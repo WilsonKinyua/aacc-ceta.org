@@ -10,6 +10,7 @@ Route::get('/member-churche/{slug}', 'PublicController@memberChurch')->name('mem
 Route::get('/posts', 'PublicController@posts')->name('posts');
 Route::get('/post/{slug}', 'PublicController@post')->name('post');
 Route::get('/gallery', 'PublicController@gallery')->name('gallery');
+Route::get('/gallery/{id}/list', 'PublicController@galleryCategory')->name('gallery.category');
 Route::get('/aacc-statements', 'PublicController@statements')->name('statements');
 Route::get('/careers', 'PublicController@careers')->name('careers');
 Route::get('/policies', function () {
@@ -109,6 +110,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('teams/media', 'TeamController@storeMedia')->name('teams.storeMedia');
     Route::post('teams/ckmedia', 'TeamController@storeCKEditorImages')->name('teams.storeCKEditorImages');
     Route::resource('teams', 'TeamController');
+
+    // Category
+    Route::delete('categories/destroy', 'CategoryController@massDestroy')->name('categories.massDestroy');
+    Route::post('categories/media', 'CategoryController@storeMedia')->name('categories.storeMedia');
+    Route::post('categories/ckmedia', 'CategoryController@storeCKEditorImages')->name('categories.storeCKEditorImages');
+    Route::resource('categories', 'CategoryController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

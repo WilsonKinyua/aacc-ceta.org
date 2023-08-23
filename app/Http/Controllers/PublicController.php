@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Gallery;
 use App\Models\MemberChurchCenter;
@@ -68,8 +69,18 @@ class PublicController extends Controller
 
     public function gallery()
     {
-        $gallery = Gallery::all();
-        return view('public.gallery', compact('gallery'));
+        // $gallery = Gallery::all();
+        $categories = Category::with(['media'])->get();
+        return view('public.gallery', compact('categories'));
+    }
+
+    public function galleryCategory($id)
+    {
+        $galleries = Gallery::whereHas('categories', function ($query) use ($id) {
+            $query->where('category_id', $id);
+        })->get();
+
+        return view('public.gallery-list', compact('galleries'));
     }
 
     public function statements()

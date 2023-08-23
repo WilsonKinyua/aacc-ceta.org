@@ -260,6 +260,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 63,
+                'title' => 'gallery_management_access',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'category_create',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'category_edit',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'category_show',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'category_delete',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'category_access',
+            ],
+            [
+                'id'    => 69,
                 'title' => 'profile_password_edit',
             ],
         ];

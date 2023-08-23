@@ -108,12 +108,12 @@
                 <div class="col-md-4 ">
                     <div class="footer_links">
                         <h4>Quick Links</h4>
-                        <a href="#" target="_blank" rel="noopener noreferrer">Togo Regional Office</a>
-                        <a href="https://desmondtutuconferencecentre.org/" target="_blank"
-                            rel="noopener noreferrer">Desmond Tutu Conference Centre</a>
-                        <a href="#" target="" rel="noopener noreferrer">AACC Staff</a>
-                        <a href="#" target="" rel="noopener noreferrer">African Union Office & Advocacy
-                        </a>
+                        {{-- <a href="#" target="_blank" rel="noopener noreferrer">Togo Regional Office</a> --}}
+                        <a href="https://www.booking.com/hotel/ke/desmond-tutu-conference-centre.en-gb.html?aid=357028&label=bin859jc-1DCAsodkIeZGVzbW9uZC10dXR1LWNvbmZlcmVuY2UtY2VudHJlSDNYA2h2iAEBmAEJuAEXyAEM2AED6AEBiAIBqAIDuAK89ZGnBsACAdICJDBiMDMxNzY0LTU4NjMtNDJmMS1iYzMyLTM2MjkwZDRkMzdkYtgCBOACAQ&sid=c0320bf5c3b5498c5796a24342674e67&dist=0&keep_landing=1&sb_price_type=total&type=total&"
+                            target="_blank" rel="noopener noreferrer">Desmond Tutu Conference Centre</a>
+                        <a href="{{ route('organization') }}" rel="noopener noreferrer">AACC Staff</a>
+                        {{-- <a href="#" target="" rel="noopener noreferrer">African Union Office & Advocacy
+                        </a> --}}
                         <a href="https://allafricayouthcongress.org/" target="_blank" rel="noopener noreferrer">All
                             Africa Youth Congress </a>
                     </div>

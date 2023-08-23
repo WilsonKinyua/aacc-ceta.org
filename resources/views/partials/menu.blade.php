@@ -48,15 +48,39 @@
                 </a>
             </li>
         @endcan
-        @can('gallery_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route('admin.galleries.index') }}"
-                    class="c-sidebar-nav-link {{ request()->is('admin/galleries') || request()->is('admin/galleries/*') ? 'c-active' : '' }}">
+        @can('gallery_management_access')
+            <li
+                class="c-sidebar-nav-dropdown {{ request()->is('admin/categories*') ? 'c-show' : '' }} {{ request()->is('admin/galleries*') ? 'c-show' : '' }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-images c-sidebar-nav-icon">
 
                     </i>
-                    {{ trans('cruds.gallery.title') }}
+                    {{ trans('cruds.galleryManagement.title') }}
                 </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('category_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.categories.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.category.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('gallery_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route('admin.galleries.index') }}"
+                                class="c-sidebar-nav-link {{ request()->is('admin/galleries') || request()->is('admin/galleries/*') ? 'c-active' : '' }}">
+                                <i class="fa-fw fas fa-images c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.gallery.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
             </li>
         @endcan
         @can('statement_access')
