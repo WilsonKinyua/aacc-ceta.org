@@ -3,6 +3,7 @@
 Route::get('/', 'PublicController@index')->name('home');
 Route::get('/about', 'PublicController@about')->name('about');
 Route::get('/organization', 'PublicController@organization')->name('organization');
+Route::get('/organization/{slug}', 'PublicController@organizationTeamDetails')->name('organization.team-details');
 Route::get('/what-we-do', 'PublicController@whatWeDo')->name('what-we-do');
 Route::get('/member-churches', 'PublicController@memberChurches')->name('member-churches');
 Route::get('/member-churche/{slug}', 'PublicController@memberChurch')->name('member-church');
@@ -102,6 +103,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('member-church-contacts/media', 'MemberChurchContactController@storeMedia')->name('member-church-contacts.storeMedia');
     Route::post('member-church-contacts/ckmedia', 'MemberChurchContactController@storeCKEditorImages')->name('member-church-contacts.storeCKEditorImages');
     Route::resource('member-church-contacts', 'MemberChurchContactController');
+
+    // Team
+    Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
+    Route::post('teams/media', 'TeamController@storeMedia')->name('teams.storeMedia');
+    Route::post('teams/ckmedia', 'TeamController@storeCKEditorImages')->name('teams.storeCKEditorImages');
+    Route::resource('teams', 'TeamController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

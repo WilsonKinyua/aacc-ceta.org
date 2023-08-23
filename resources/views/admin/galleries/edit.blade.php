@@ -22,6 +22,16 @@
                 <span class="help-block">{{ trans('cruds.gallery.fields.image_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="caption">{{ trans('cruds.gallery.fields.caption') }}</label>
+                <input class="form-control {{ $errors->has('caption') ? 'is-invalid' : '' }}" type="text" name="caption" id="caption" value="{{ old('caption', $gallery->caption) }}" required>
+                @if($errors->has('caption'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('caption') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.gallery.fields.caption_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -39,17 +49,17 @@
     var uploadedImageMap = {}
 Dropzone.options.imageDropzone = {
     url: '{{ route('admin.galleries.storeMedia') }}',
-    maxFilesize: 200, // MB
+    // maxFilesize: 200, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
-    params: {
-      size: 200,
-      width: 4096,
-      height: 4096
-    },
+    // params: {
+    //   size: 200,
+    //   width: 4096,
+    //   height: 4096
+    // },
     success: function (file, response) {
       $('form').append('<input type="hidden" name="image[]" value="' + response.name + '">')
       uploadedImageMap[file.name] = response.name

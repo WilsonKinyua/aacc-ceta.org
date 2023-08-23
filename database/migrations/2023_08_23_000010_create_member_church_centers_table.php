@@ -11,7 +11,6 @@ class CreateMemberChurchCentersTable extends Migration
         Schema::create('member_church_centers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('location')->nullable();
-            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

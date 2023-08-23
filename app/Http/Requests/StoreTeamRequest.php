@@ -2,31 +2,32 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Gallery;
+use App\Models\Team;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreGalleryRequest extends FormRequest
+class StoreTeamRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('gallery_create');
+        return Gate::allows('team_create');
     }
 
     public function rules()
     {
         return [
-            'image' => [
-                'array',
-                'required',
-            ],
-            'image.*' => [
-                'required',
-            ],
-            'caption' => [
+            'name' => [
                 'string',
                 'required',
+            ],
+            'position' => [
+                'string',
+                'required',
+            ],
+            'phone' => [
+                'string',
+                'nullable',
             ],
         ];
     }

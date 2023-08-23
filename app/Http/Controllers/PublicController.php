@@ -8,6 +8,7 @@ use App\Models\Gallery;
 use App\Models\MemberChurchCenter;
 use App\Models\Post;
 use App\Models\Statement;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -25,7 +26,15 @@ class PublicController extends Controller
 
     public function organization()
     {
-        return view('public.organization');
+        $teams = Team::with(['media'])->get();
+        return view('public.organization', compact('teams'));
+    }
+
+    public function organizationTeamDetails($slug)
+    {
+        $team = Team::where('slug', $slug)->firstOrFail();
+
+        return view('public.organization-team-details', compact('team'));
     }
 
     public function whatWeDo()

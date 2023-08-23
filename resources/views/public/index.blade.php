@@ -1399,7 +1399,7 @@
                                     {{ $post->title }}
                                 </h4>
                                 <p>
-                                    <a href="{{ route('post', $post->slug) }}">AACC Statements</a>
+                                    <a href="{{ route('post', $post->slug) }}">News</a>
                                 </p>
                                 <div class=" text-muted text-small text-end">
                                     <a href="{{ route('post', $post->slug) }}"

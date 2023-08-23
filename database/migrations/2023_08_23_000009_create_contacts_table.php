@@ -12,7 +12,7 @@ class CreateContactsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->integer('phone')->unique();
             $table->string('subject');
             $table->longText('message');
             $table->timestamps();

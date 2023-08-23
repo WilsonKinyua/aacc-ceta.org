@@ -13,7 +13,7 @@
                         @foreach ($image->image as $key => $media)
                             <a class="gallery-image-link" href="{{ $media->getUrl() }}" data-lightbox="gallerygallery-set"
                                 data-title="AACC" data-description="">
-                                <img class="gallery-image" src="{{ $media->getUrl() }}" alt="" /></a>
+                                <img class="gallery-image" src="{{ $media->getUrl() }}" alt="{{ $image->caption }}" /></a>
                         @endforeach
                     </div>
 
