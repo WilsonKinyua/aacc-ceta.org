@@ -39,7 +39,7 @@
                             Founded in 1963, the All Africa Conference of Churches (AACC) is an ecumenical fellowship of 204 members comprising of churches, National Councils of Churches (NCCs), Theological and Lay Training Institutions and other Christian organizations in 42 African countries.
                         </p>
                     </div>
-                    <div class="svg_map text-end">
+                    {{-- <div class="svg_map text-end">
 
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             viewBox="0 0 1200 1230" enable-background="new 0 0 1200 1230" xml:space="preserve">
@@ -484,9 +484,9 @@
                             <circle class="active_country " id="Morocco_marker" cx="248.9" cy="78.6"
                                 r="14" />
                         </svg>
-                    </div>
+                    </div> --}}
 
-                    <div class="member_churches_country_details">
+                    {{-- <div class="member_churches_country_details">
 
                         <div class="mc_country_details is_shown" id="Ghana_country">
                             <h3>Ghana</h3>
@@ -1333,7 +1333,7 @@
                         <div class="view_all_btn">
                             <a href="member_churches.html" class="btn btn-sm bg-color text-white">View All</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
