@@ -85,7 +85,7 @@ class PublicController extends Controller
 
     public function statements()
     {
-        $statements = Statement::all();
+        $statements = Statement::latest()->get();
         return view('public.statements', compact('statements'));
     }
 
