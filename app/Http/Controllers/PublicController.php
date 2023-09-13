@@ -17,7 +17,7 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $events = Event::all();
+        $events = Event::orderBy("id","desc")->get();
         $posts = Post::latest()->get();
         return view('public.index', compact('posts', 'events'));
     }
