@@ -21,9 +21,13 @@ class UpdateMemberChurchContactRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'member_church_name' => [
+                'string',
+                'nullable',
+            ],
             'email' => [
                 'string',
-                'required',
+                'nullable',
             ],
             'phone_number' => [
                 'string',

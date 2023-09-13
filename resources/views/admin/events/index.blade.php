@@ -1,40 +1,41 @@
-@can('member_church_contact_create')
+@extends('layouts.admin')
+@section('content')
+@can('event_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.member-church-contacts.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.memberChurchContact.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.events.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.event.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
-
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.memberChurchContact.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.event.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-memberChurchCenterMemberChurchContacts">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Event">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.memberChurchContact.fields.member_church_center') }}
+                            {{ trans('cruds.event.fields.when') }}
                         </th>
                         <th>
-                            {{ trans('cruds.memberChurchContact.fields.member_church_name') }}
+                            {{ trans('cruds.event.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.memberChurchContact.fields.email') }}
+                            {{ trans('cruds.event.fields.location') }}
                         </th>
                         <th>
-                            {{ trans('cruds.memberChurchContact.fields.phone_number') }}
+                            {{ trans('cruds.event.fields.created_at') }}
                         </th>
                         <th>
-                            {{ trans('cruds.memberChurchContact.fields.created_at') }}
+                            {{ trans('cruds.event.fields.updated_at') }}
                         </th>
                         <th>
                             &nbsp;
@@ -42,41 +43,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($memberChurchContacts as $key => $memberChurchContact)
-                        <tr data-entry-id="{{ $memberChurchContact->id }}">
+                    @foreach($events as $key => $event)
+                        <tr data-entry-id="{{ $event->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $memberChurchContact->member_church_center->location ?? '' }}
+                                {{ $event->when ?? '' }}
                             </td>
                             <td>
-                                {{ $memberChurchContact->member_church_name ?? '' }}
+                                {{ $event->title ?? '' }}
                             </td>
                             <td>
-                                {{ $memberChurchContact->email ?? '' }}
+                                {{ $event->location ?? '' }}
                             </td>
                             <td>
-                                {{ $memberChurchContact->phone_number ?? '' }}
+                                {{ $event->created_at ?? '' }}
                             </td>
                             <td>
-                                {{ $memberChurchContact->created_at ?? '' }}
+                                {{ $event->updated_at ?? '' }}
                             </td>
                             <td>
-                                @can('member_church_contact_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.member-church-contacts.show', $memberChurchContact->id) }}">
+                                @can('event_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.events.show', $event->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('member_church_contact_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.member-church-contacts.edit', $memberChurchContact->id) }}">
+                                @can('event_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.events.edit', $event->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('member_church_contact_delete')
-                                    <form action="{{ route('admin.member-church-contacts.destroy', $memberChurchContact->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('event_delete')
+                                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -93,16 +94,19 @@
     </div>
 </div>
 
+
+
+@endsection
 @section('scripts')
 @parent
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('member_church_contact_delete')
+@can('event_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.member-church-contacts.massDestroy') }}",
+    url: "{{ route('admin.events.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -130,10 +134,10 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 5, 'desc' ]],
+    order: [[ 4, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-memberChurchCenterMemberChurchContacts:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Event:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

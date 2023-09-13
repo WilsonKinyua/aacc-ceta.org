@@ -28,9 +28,22 @@
                         class="help-block">{{ trans('cruds.memberChurchContact.fields.member_church_center_helper') }}</span>
                 </div>
                 <div class="form-group">
-                    <label class="required" for="email">{{ trans('cruds.memberChurchContact.fields.email') }}</label>
+                    <label
+                        for="member_church_name">{{ trans('cruds.memberChurchContact.fields.member_church_name') }}</label>
+                    <input class="form-control {{ $errors->has('member_church_name') ? 'is-invalid' : '' }}" type="text"
+                        name="member_church_name" id="member_church_name" value="{{ old('member_church_name', '') }}">
+                    @if ($errors->has('member_church_name'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('member_church_name') }}
+                        </div>
+                    @endif
+                    <span
+                        class="help-block">{{ trans('cruds.memberChurchContact.fields.member_church_name_helper') }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">{{ trans('cruds.memberChurchContact.fields.email') }}</label>
                     <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text"
-                        name="email" id="email" value="{{ old('email', '') }}" required>
+                        name="email" id="email" value="{{ old('email', '') }}">
                     @if ($errors->has('email'))
                         <div class="invalid-feedback">
                             {{ $errors->first('email') }}
@@ -106,7 +119,7 @@
                                                     .message ?
                                                     `${genericErrorText}\n${xhr.status} ${response.message}` :
                                                     `${genericErrorText}\n ${xhr.status} ${xhr.statusText}`
-                                                );
+                                                    );
                                             }
 
                                             $('form').append(
@@ -120,7 +133,7 @@
 
                                         if (xhr.upload) {
                                             xhr.upload.addEventListener('progress', function(
-                                                e) {
+                                            e) {
                                                 if (e.lengthComputable) {
                                                     loader.uploadTotal = e.total;
                                                     loader.uploaded = e.loaded;

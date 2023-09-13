@@ -10,7 +10,8 @@ class CreateMemberChurchContactsTable extends Migration
     {
         Schema::create('member_church_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email');
+            $table->string('member_church_name')->nullable();
+            $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->longText('address')->nullable();
             $table->timestamps();

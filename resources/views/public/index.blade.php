@@ -33,10 +33,12 @@
             </div>
             <div class="col-md-9">
                 <div class="member_churces_cont">
-                    <div class="member_churches_into_text">
-                        <h2>Our Member Churches</h2>
+                    <div>
+                        <h2>Our Members</h2>
                         <p>
-                            Founded in 1963, the All Africa Conference of Churches (AACC) is an ecumenical fellowship of 204 members comprising of churches, National Councils of Churches (NCCs), Theological and Lay Training Institutions and other Christian organizations in 42 African countries.
+                            Founded in 1963, the All Africa Conference of Churches (AACC) is an ecumenical fellowship of 204
+                            members comprising of churches, National Councils of Churches (NCCs), Theological and Lay
+                            Training Institutions and other Christian organizations in 42 African countries.
                         </p>
                     </div>
                     {{-- <div class="svg_map text-end">
@@ -1402,9 +1404,8 @@
                                     <a href="{{ route('post', $post->slug) }}">News</a>
                                 </p>
                                 <div class=" text-muted text-small text-end">
-                                    <a href="{{ route('post', $post->slug) }}"
-                                        class="btn btn-sm bg-sec-color text-white"> Read More <i
-                                            class="fa fa-arrow-right"></i></a>
+                                    <a href="{{ route('post', $post->slug) }}" class="btn btn-sm bg-sec-color text-white">
+                                        Read More <i class="fa fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1441,138 +1442,24 @@
                 <div class="col-md-6">
                     <div class="Latest-events">
                         <h2>Latest Events</h2>
-                        <a href="{{ route('aacc-9th-theological-institute') }}" class="event_link">
-                            <div class="event-item">
-                                <div class="event-date">
-
-                                    <span class="date">
-                                        7-16
-                                    </span>
-                                    <span class="month">
-                                        Nov
-                                    </span>
-                                    <span class="year">
-                                        2023
-                                    </span>
+                        @foreach ($events as $event)
+                            <a href="{{ route('event', $event->slug) }}" class="event_link">
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <span class="month">
+                                            {{ $event->when ?? '' }}
+                                        </span>
+                                    </div>
+                                    <div class="event_dtls">
+                                        <h5 class="color">{{ $event->title ?? '' }}</h5>
+                                        @if ($event->location)
+                                            <p class="sec-color"><i class="fa fa-map-marker-alt"></i> {{ $event->location }}
+                                            </p>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="event_dtls">
-                                    <h5 class="color">AACC 9th Theological Institute</h5>
-                                    <p class="sec-color"><i class="fa fa-map-marker-alt"></i> Abuja NIGERIA</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{ route('symposium-on-addressing-misleading-theologies-on-power-and-authority') }}"
-                            class="event_link">
-                            <div class="event-item">
-                                <div class="event-date">
-
-                                    <span class="date">
-                                        19
-                                    </span>
-                                    <span class="month">
-                                        Sep
-                                    </span>
-                                    <span class="year">
-                                        2022
-                                    </span>
-                                </div>
-                                <div class="event_dtls">
-                                    <h5 class="color">Symposium on Addressing Misleading Theologies on Power and
-                                        Authority</h5>
-                                    <p class="sec-color"><i class="fa fa-map-marker-alt"></i> Desmond Tutu
-                                        Conference
-                                        Center </p>
-                                    <p>
-                                    <p style="text-align: center;">
-                                        <strong>SYMPOSI</strong><strong>U</strong><strong>M
-                                            ON ADDRESSING MIS...
-                                    </p>
-
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ route('webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery') }}"
-                            class="event_link">
-                            <div class="event-item">
-                                <div class="event-date">
-
-                                    <span class="date">
-                                        24
-                                    </span>
-                                    <span class="month">
-                                        Jun
-                                    </span>
-                                    <span class="year">
-                                        2022
-                                    </span>
-                                </div>
-                                <div class="event_dtls">
-                                    <h5 class="color">Webinar for Young People on Migration, Trafficking in Persons,
-                                        And
-                                        Modern Slavery</h5>
-                                    <p class="sec-color"><i class="fa fa-map-marker-alt"></i> Zoom</p>
-                                    <p>
-                                    <ol>
-                                        <li><strong>Introduction </strong></li>
-                                    </ol>
-                                    <p>Internal&nbsp;migration&nbsp;within&nbsp;Af...</p>
-
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ route('day-of-the-african-child') }}" class="event_link">
-                            <div class="event-item">
-                                <div class="event-date">
-                                    <span class="date">
-                                        16
-                                    </span>
-                                    <span class="month">
-                                        Jun
-                                    </span>
-                                    <span class="year">
-                                        2022
-                                    </span>
-                                </div>
-                                <div class="event_dtls">
-                                    <h5 class="color">Day of the African Child. </h5>
-                                    <p class="sec-color"><i class="fa fa-map-marker-alt"></i> Zoom</p>
-                                    <p>
-                                    <p><strong>Introduction </strong></p>
-                                    <p>AACC will this year commemorate June 16, the Day of the Af...</p>
-
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="{{ route('ecumenical-commemorations-of-the-world-environment-day') }}"
-                            class="event_link">
-                            <div class="event-item">
-                                <div class="event-date">
-
-                                    <span class="date">
-                                        05
-                                    </span>
-                                    <span class="month">
-                                        Jun
-                                    </span>
-                                    <span class="year">
-                                        2022
-                                    </span>
-                                </div>
-                                <div class="event_dtls">
-                                    <h5 class="color">Ecumenical Commemorations of the World Environment Day</h5>
-                                    <p class="sec-color"><i class="fa fa-map-marker-alt"></i> </p>
-                                    <p>
-                                    <p><strong><em>Theme: “The Welfare of the Earth is our Welfare” Jeremiah
-                                                29:7</em></strong></p>
-                                    ...</p>
-
-                                </div>
-                            </div>
-                        </a>
-
+                            </a>
+                        @endforeach
                     </div>
                     <style>
                         .event_link {

@@ -26,6 +26,9 @@
                                 {{ trans('cruds.memberChurchContact.fields.member_church_center') }}
                             </th>
                             <th>
+                                {{ trans('cruds.memberChurchContact.fields.member_church_name') }}
+                            </th>
+                            <th>
                                 {{ trans('cruds.memberChurchContact.fields.email') }}
                             </th>
                             <th>
@@ -46,7 +49,10 @@
 
                                 </td>
                                 <td>
-                                    {{ $memberChurchContact->member_church_center->country->name ?? '' }}
+                                    {{ $memberChurchContact->member_church_center->location ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $memberChurchContact->member_church_name ?? '' }}
                                 </td>
                                 <td>
                                     {{ $memberChurchContact->email ?? '' }}
@@ -142,7 +148,7 @@
             $.extend(true, $.fn.dataTable.defaults, {
                 orderCellsTop: true,
                 order: [
-                    [4, 'desc']
+                    [5, 'desc']
                 ],
                 pageLength: 100,
             });

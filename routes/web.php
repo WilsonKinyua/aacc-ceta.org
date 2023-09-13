@@ -21,23 +21,8 @@ Route::get('/african-pulse', function () {
 })->name('african-pulse');
 Route::get('/contacts', 'PublicController@contacts')->name('contacts');
 Route::post('/contact/create', 'PublicController@contactMessage')->name('contact.create');
+Route::get('/event/{slug}', 'PublicController@event')->name('event');
 
-// ====================================================== Events ========================================================================
-Route::get('/aacc-9th-theological-institute', function () {
-    return view('public.events.aacc-9th-theological-institute');
-})->name('aacc-9th-theological-institute');
-Route::get('/symposium-on-addressing-misleading-theologies-on-power-and-authority', function () {
-    return view('public.events.symposium-on-addressing-misleading-theologies-on-power-and-authority');
-})->name('symposium-on-addressing-misleading-theologies-on-power-and-authority');
-Route::get('/webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery', function () {
-    return view('public.events.webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery');
-})->name('webinar-for-young-people-on-migration-trafficking-in-persons-and-modern-slavery');
-Route::get('/day-of-the-african-child', function () {
-    return view('public.events.day-of-the-african-child');
-})->name('day-of-the-african-child');
-Route::get('/ecumenical-commemorations-of-the-world-environment-day', function () {
-    return view('public.events.ecumenical-commemorations-of-the-world-environment-day');
-})->name('ecumenical-commemorations-of-the-world-environment-day');
 
 Route::get('/home', function () {
     if (session('status')) {
@@ -116,6 +101,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('categories/media', 'CategoryController@storeMedia')->name('categories.storeMedia');
     Route::post('categories/ckmedia', 'CategoryController@storeCKEditorImages')->name('categories.storeCKEditorImages');
     Route::resource('categories', 'CategoryController');
+
+    // Event
+    Route::delete('events/destroy', 'EventController@massDestroy')->name('events.massDestroy');
+    Route::post('events/media', 'EventController@storeMedia')->name('events.storeMedia');
+    Route::post('events/ckmedia', 'EventController@storeCKEditorImages')->name('events.storeCKEditorImages');
+    Route::resource('events', 'EventController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

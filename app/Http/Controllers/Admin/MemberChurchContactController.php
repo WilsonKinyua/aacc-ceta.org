@@ -44,7 +44,7 @@ class MemberChurchContactController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $memberChurchContact->id]);
         }
 
-        return redirect()->route('admin.member-church-contacts.index');
+        return redirect()->back()->with('message', 'Member Church Contact has been added successfully');
     }
 
     public function edit(MemberChurchContact $memberChurchContact)

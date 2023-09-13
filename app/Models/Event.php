@@ -9,11 +9,11 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class MemberChurchContact extends Model implements HasMedia
+class Event extends Model implements HasMedia
 {
     use InteractsWithMedia, HasFactory;
 
-    public $table = 'member_church_contacts';
+    public $table = 'events';
 
     protected $dates = [
         'created_at',
@@ -22,11 +22,11 @@ class MemberChurchContact extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'member_church_center_id',
-        'member_church_name',
-        'email',
-        'phone_number',
-        'address',
+        'when',
+        'title',
+        'location',
+        'description',
+        'slug',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -41,10 +41,5 @@ class MemberChurchContact extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-    }
-
-    public function member_church_center()
-    {
-        return $this->belongsTo(MemberChurchCenter::class, 'member_church_center_id');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Event;
 use App\Models\Gallery;
 use App\Models\MemberChurchCenter;
 use App\Models\Post;
@@ -16,8 +17,15 @@ class PublicController extends Controller
 {
     public function index()
     {
+        $events = Event::all();
         $posts = Post::latest()->get();
-        return view('public.index', compact('posts'));
+        return view('public.index', compact('posts', 'events'));
+    }
+
+    public function event($slug)
+    {
+        $event = Event::where('slug', $slug)->firstOrFail();
+        return view('public.event', compact('event'));
     }
 
     public function about()
@@ -69,7 +77,6 @@ class PublicController extends Controller
 
     public function gallery()
     {
-        // $gallery = Gallery::all();
         $categories = Category::with(['media'])->get();
         return view('public.gallery', compact('categories'));
     }
