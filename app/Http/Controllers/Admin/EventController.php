@@ -22,7 +22,7 @@ class EventController extends Controller
     {
         abort_if(Gate::denies('event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $events = Event::all();
+        $events = Event::with(['media'])->get();
 
         return view('admin.events.index', compact('events'));
     }
@@ -38,6 +38,10 @@ class EventController extends Controller
     {
         $request->merge(['slug' => Str::slug($request->title, '-')]);
         $event = Event::create($request->all());
+
+        if ($request->input('poster', false)) {
+            $event->addMedia(storage_path('tmp/uploads/' . basename($request->input('poster'))))->toMediaCollection('poster');
+        }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $event->id]);
@@ -57,6 +61,17 @@ class EventController extends Controller
     {
         $request->merge(['slug' => Str::slug($request->title, '-')]);
         $event->update($request->all());
+
+        if ($request->input('poster', false)) {
+            if (! $event->poster || $request->input('poster') !== $event->poster->file_name) {
+                if ($event->poster) {
+                    $event->poster->delete();
+                }
+                $event->addMedia(storage_path('tmp/uploads/' . basename($request->input('poster'))))->toMediaCollection('poster');
+            }
+        } elseif ($event->poster) {
+            $event->poster->delete();
+        }
 
         return redirect()->route('admin.events.index');
     }

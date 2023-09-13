@@ -11,14 +11,18 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-
-                            <div class="col-md-4 mt-3">
-                                <img src="{{ asset('res/AACC 9th Theological Institute 2.png') }}" alt="{{ $event->title }}"
-                                    width="100%">
-                            </div>
-                            <div class="col-md-8">
-                                {!! $event->description ?? '' !!}
-                            </div>
+                            @if ($event->poster)
+                                <div class="col-md-4 mt-3">
+                                    <img src="{{ $event->poster->getUrl() }}" alt="{{ $event->title }}" width="100%">
+                                </div>
+                                <div class="col-md-8">
+                                    {!! $event->description ?? '' !!}
+                                </div>
+                            @else
+                                <div class="col-md-12">
+                                    {!! $event->description ?? '' !!}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

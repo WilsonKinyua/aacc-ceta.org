@@ -15,6 +15,10 @@ class Event extends Model implements HasMedia
 
     public $table = 'events';
 
+    protected $appends = [
+        'poster',
+    ];
+
     protected $dates = [
         'created_at',
         'updated_at',
@@ -41,5 +45,17 @@ class Event extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
+    }
+
+    public function getPosterAttribute()
+    {
+        $file = $this->getMedia('poster')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
     }
 }

@@ -55,6 +55,18 @@
                             {!! $event->description !!}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.event.fields.poster') }}
+                        </th>
+                        <td>
+                            @if($event->poster)
+                                <a href="{{ $event->poster->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $event->poster->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

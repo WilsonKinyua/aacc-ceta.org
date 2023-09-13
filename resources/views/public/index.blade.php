@@ -1456,6 +1456,9 @@
                                             <p class="sec-color"><i class="fa fa-map-marker-alt"></i> {{ $event->location }}
                                             </p>
                                         @endif
+                                        {{-- <p>
+                                            {!! substr($event->description, 0, 100) !!}
+                                        </p> --}}
                                     </div>
                                 </div>
                             </a>
